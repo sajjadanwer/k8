@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app3-service
+  labels:
+    name: app3-service
+    app: app3
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    name: app3-pod
+    app: myapp-3

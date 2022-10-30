@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1-deploy
+  labels:
+    name: app1-deploy
+    app: myapp-1
+spec:
+  replicas: 3
+  selector:
+      matchLabels:
+        name: app1-pod
+        app: myapp-1
+  template:
+    metadata:
+      name: app1-pod
+      labels:
+        name: app1-pod
+        app: myapp-1
+    spec:
+      containers:
+        - name: app1
+          image: sajjaddev/app1:v1
+          ports:
+          - containerPort: 80

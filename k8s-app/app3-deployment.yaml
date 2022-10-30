@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app3-deploy
+  labels:
+    name: app3-deploy
+    app: myapp-3
+spec:
+  replicas: 3
+  selector:
+      matchLabels:
+        name: app3-pod
+        app: myapp-3
+  template:
+    metadata:
+      name: app3-pod
+      labels:
+        name: app3-pod
+        app: myapp-3
+    spec:
+      containers:
+        - name: app3
+          image: sajjaddev/app3:v1
+          ports:
+          - containerPort: 80
