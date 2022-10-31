@@ -1,0 +1,17 @@
+# Enable Ingress Azure Application gateway via ADDON for AKS
+
+az aks addon enable --addon ingress-appgw --appgw-subnet-cidr "10.225.0.0/16" --resource-group test-app --name Myapp_Cluster
+
+# Create HorizontalPodAutoscaler
+
+kubectl autoscale deployment {$deployment-name}  --cpu-percent=50 --min=1 --max=10
+
+kubectl get hpa
+
+# Increase the load for testing 
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://{$service-name}; done"
+
+# Check logs for HPA
+
+kubectl get hpa {$deployment-name} --watch

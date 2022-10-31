@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/backend-path-prefix: "/"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /app1
+        backend:
+          service:
+            name: app1-service
+            port:
+              number: 80
+        pathType: Exact
+      - path: /app2
+        backend:
+          service:
+            name: app2-service
+            port:
+              number: 80
+        pathType: Exact
+      - path: /app3
+        backend:
+          service:
+            name: app3-service
+            port:
+              number: 80
+        pathType: Exact

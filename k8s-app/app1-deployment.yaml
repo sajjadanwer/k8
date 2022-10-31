@@ -23,3 +23,8 @@ spec:
           image: sajjaddev/app1:v1
           ports:
           - containerPort: 80
+          resources:
+            limits:
+               cpu: 100m
+            requests:
+               cpu: 50m
