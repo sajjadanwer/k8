@@ -6,6 +6,7 @@ metadata:
     name: app3-service
     app: app3
 spec:
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 80

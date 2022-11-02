@@ -15,18 +15,18 @@ spec:
             name: app1-service
             port:
               number: 80
-        pathType: Exact
+        pathType: Prefix
       - path: /app2
         backend:
           service:
             name: app2-service
             port:
               number: 80
-        pathType: Exact
+        pathType: Prefix
       - path: /app3
         backend:
           service:
             name: app3-service
             port:
               number: 80
-        pathType: Exact
+        pathType: Prefix
